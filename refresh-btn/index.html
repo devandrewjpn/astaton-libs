@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #refresh-cache {
+          position: fixed;
+          z-index: 999;
+          cursor: pointer;
+          bottom: 0;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          left: 0;
+          padding: .5rem;
+          border-radius: 100%;
+          margin: 10px;
+          background: linear-gradient(136.33deg, #D125BE -1.95%, #495FA4 117.13%);
+          height: 50px;
+          transition: .5s;
+        }
+    
+        #refresh-cache:hover::after {
+          position: absolute;
+          content: 'Limpar cache da página';
+          width: 12rem;
+          border-radius: 5px;
+          left: 0;
+          margin-left: 70px;
+          font-family: cursive;
+          padding: .5rem;
+          font-weight: 500;
+          animation: show-refresh 1s;
+          background: rgb(19, 19, 19);
+          color: rgb(228, 228, 228);
+        }
+    
+        @keyframes show-refresh {
+          0% {
+            opacity: 0;
+          }
+    
+          100% {
+            opacity: 1;
+          }
+        }
+      </style>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    
+          const refreshbtn = document.createElement('div')
+          refreshbtn.setAttribute('id', 'refresh-cache')
+    
+          const refreshimage = document.createElement('img')
+          refreshimage.style.width = '35px'
+          refreshimage.src = 'https://agenciabrasildigital.com.br/rotate.svg'
+    
+          refreshbtn.appendChild(refreshimage)
+          refreshbtn.addEventListener('click', () => {
+            location.reload(true)
+          })
+    
+          document.body.appendChild(refreshbtn)
+        })
+      </script>
+</body>
+</html>
