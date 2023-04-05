@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ast-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ast-items {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ast-nav-sandw {
+            display: none !important;
+            background: transparent;
+            border-radius: .2rem;
+            height: 35px;
+            width: 35px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .ast-nav-sandw::after {
+            content: '';
+            display: block;
+            width: 1.4rem;
+            height: 2px;
+            background: currentColor;
+            border-radius: 2px;
+            box-shadow: 0 6px currentColor, 0 -6px currentColor;
+            transition: .3s;
+        }
+
+        .ast-sandw-active {
+            transform: rotate(90deg);
+            background: transparent;
+        }
+
+        .ast-sandw-active::after {
+            content: "\00d7";
+            background: none;
+            box-shadow: none;
+            font-size: 2rem;
+            width: auto;
+            height: auto;
+        }
+
+        .show-ast-drop {
+            display: none;
+        }
+
+        @media (max-width:700px) {
+            .ast-nav-drop {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.185);
+            }
+
+            .ast-nav-sandw {
+                display: block !important;
+                z-index: 3;
+                color: black;
+            }
+
+            .ast-items {
+                position: fixed;
+                z-index: 2;
+                top: 0;
+                right: -60%;
+                margin: 0;
+                background: white;
+                width: 60%;
+                height: 100%;
+                transition: .5s;
+            }
+
+            .ast-nav-show {
+                animation: show-ast-nav .5s forwards;
+            }
+        }
+
+        @keyframes show-ast-nav {
+            from {
+                right: -60%;
+            }
+
+            to {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="ast-nav">
+        <div class="ast-logo">logo</div>
+        <button class="ast-nav-sandw"></button>
+        <ul class="ast-items">
+            <li>item1</li>
+            <li>item2</li>
+        </ul>
+    </nav>
+
+    <script>
+        const astsanw = document.querySelector('.ast-nav-sandw')
+        const astnavbox = document.querySelector('.ast-items')
+        const navdrop = document.createElement('div')
+
+        navdrop.classList.add('ast-nav-drop')
+        navdrop.classList.add('show-ast-drop')
+        document.body.appendChild(navdrop)
+
+        navdrop.addEventListener('click', () => {
+            astnavbox.classList.remove('ast-nav-show')
+            astsanw.classList.toggle('ast-sandw-active')
+            navdrop.classList.toggle('show-ast-drop')
+        })
+
+        astsanw.addEventListener('click', () => {
+            navdrop.classList.toggle('show-ast-drop')
+            astsanw.classList.toggle('ast-sandw-active')
+            astnavbox.classList.toggle('ast-nav-show')
+        })
+    </script>
+</body>
+
+</html>
