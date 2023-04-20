@@ -1,0 +1,23 @@
+.menu-list li {
+    color: white;
+    font-weight: 600;
+    position: relative;
+}
+.menu-list li:after {
+    content: "";
+    bottom: -5px;
+    display: block;
+    margin-left: 10px;
+    height: 2px;
+    border-radius: 5px;
+    left: 50%;
+    position: absolute;
+    background: white;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  
+  .menu-list li:hover:after { 
+    width: 80%; 
+    left: 0; 
+  }
