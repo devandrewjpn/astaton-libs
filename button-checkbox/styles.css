@@ -1,0 +1,21 @@
+.produto-box {
+    border: 1px solid #6056d1;
+    color: #6056d1;
+    user-select: none;
+    cursor: pointer;
+    border-radius: .4rem;
+    padding: 1rem .5rem;
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.produto-check {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+}
+.produto-check:checked+.produto-box {
+    background: red;
+}
