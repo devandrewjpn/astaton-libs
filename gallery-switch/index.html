@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="lightbox.min.css">
+</head>
+
+<body>
+    <section class="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="gallery-filter">
+                    <span class="filter-item active" data-filter="all">all</span>
+                    <span class="filter-item" data-filter="g2">Gear 2</span>
+                    <span class="filter-item" data-filter="g3">Gear 3</span>
+                    <span class="filter-item" data-filter="g4">Gear 4</span>
+                    <span class="filter-item" data-filter="g5">Gear 5</span>
+                </div>
+            </div>
+            <div id="lightgallery" class="row">
+
+                <div class="gallery-item g2">
+                    <a data-lightbox="g2" href="https://criticalhits.com.br/wp-content/uploads/2022/08/Gear-Second.jpg"
+                        class="gallery-item-inner">
+                        <img src="https://criticalhits.com.br/wp-content/uploads/2022/08/Gear-Second.jpg">
+                    </a>
+                </div>
+
+                <div class="gallery-item g3">
+                    <a data-lightbox="g3"
+                        href="https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/12/Luffy-Gear-Third-Featured.jpg"
+                        class="gallery-item-inner">
+                        <img
+                            src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/12/Luffy-Gear-Third-Featured.jpg">
+                    </a>
+                </div>
+
+                <div class="gallery-item g4">
+                    <a data-lightbox="g4"
+                        href="https://criticalhits.com.br/wp-content/uploads/2023/01/Luffy-Activates-Gear-Fourth.jpg"
+                        class="gallery-item-inner">
+                        <img
+                            src="https://criticalhits.com.br/wp-content/uploads/2023/01/Luffy-Activates-Gear-Fourth.jpg">
+                    </a>
+                </div>
+
+                <div class="gallery-item g5">
+                    <a data-lightbox="g5"
+                        href="https://www.dexerto.com/cdn-cgi/image/width=3840,quality=75,format=auto/https://editors.dexerto.com/wp-content/uploads/2023/08/06/luffy-gear-5-one-piece-episode-1072-1024x576.jpeg"
+                        class="gallery-item-inner">
+                        <img
+                            src="https://www.dexerto.com/cdn-cgi/image/width=3840,quality=75,format=auto/https://editors.dexerto.com/wp-content/uploads/2023/08/06/luffy-gear-5-one-piece-episode-1072-1024x576.jpeg">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const filterContainer = document.querySelector(".gallery-filter");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterContainer.addEventListener("click", (event) => {
+            if (event.target.classList.contains("filter-item")) {
+
+                filterContainer.querySelector(".active").classList.remove("active");
+
+                event.target.classList.add("active");
+
+                const filterValue = event.target.getAttribute("data-filter");
+
+                galleryItems.forEach((item) => {
+
+                    if (item.classList.contains(filterValue) || filterValue === 'all') {
+                        item.classList.remove("hide");
+                        item.classList.add("show");
+                    }
+
+                    else {
+                        item.classList.remove("show");
+                        item.classList.add("hide");
+                    }
+
+                });
+            }
+        });
+    </script>
+
+    <script src="lightbox-plus-jquery.min.js"></script>
+</body>
+
+</html>
